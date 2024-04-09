@@ -11,7 +11,7 @@ interface Props {
 export default function ActivityDetails({activity, cancelSelectActivity, openForm}: Props) {
     return (
         <Card>
-        <Image src={`./assets/categoryImages/${activity.category}.jpg`}  alt={activity.category}/>
+        <Image src={`assests/categoryImages/${activity.category}.jpg`}  alt={activity.category}/>       
         <CardContent>
           <CardHeader>{activity.title}</CardHeader>
           <CardMeta>

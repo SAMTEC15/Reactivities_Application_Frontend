@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import { Container } from 'semantic-ui-react';
 import { Activity } from '../models/activity';
 import NavBar from './NavBar';
 import ActvityDashboard from '../../features/activities/dashboard/ActivityDashboard';
 import { v4 as uuid } from 'uuid'
+import agent from '../api/agent';
 
 function App() {
   const [activities, setActivities] = useState<Activity[]>([]);
@@ -12,9 +12,10 @@ function App() {
   const [editMode, setEditMode] = useState(false); // Corrected variable name from ssetEditModel to setEditMode
 
   useEffect(() => {
-    axios.get<Activity[]>('https://localhost:5000/api/activities')
+    // axios.get<Activity[]>('https://localhost:5000/api/activities')
+    agent.Activities.list()
       .then(response => {
-        setActivities(response.data);
+        setActivities(response);
       });
   }, []);
 
@@ -39,11 +40,11 @@ function App() {
   function handleCreateOrEditActivity(activity: Activity) {
     activity.id
       ? setActivities([...activities.filter(u => u.id !== activity.id), activity])
-      : setActivities([...activities, {...activity, id: uuid()}]);
+      : setActivities([...activities, { ...activity, id: uuid() }]);
     setEditMode(false);
     setSelectedActivity(activity);
   }
-  function handleDeleteActivity(id: string){
+  function handleDeleteActivity(id: string) {
     setActivities([...activities.filter(x => x.id !== id)])
   }
 

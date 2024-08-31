@@ -23,3 +23,25 @@ const DateTimePicker: React.FC<DateTimePickerProps> = ({ selectedDate, onChange 
 };
 
 export default DateTimePicker;
+
+// import React from 'react';
+
+// interface MyDateInputProps {
+//   selectedDate: Date | null;
+//   onChange: (date: Date | null) => void;
+// }
+
+// const MyDateInput: React.FC<MyDateInputProps> = ({ selectedDate, onChange }) => {
+//   return (
+//     <input
+//       type="date"
+//       value={selectedDate ? selectedDate.toISOString().split('T')[0] : ''}
+//       onChange={(e) => {
+//         const newDate = e.target.value ? new Date(e.target.value) : null;
+//         onChange(newDate);
+//       }}
+//     />
+//   );
+// };
+
+// export default MyDateInput;

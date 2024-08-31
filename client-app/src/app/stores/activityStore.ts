@@ -76,7 +76,7 @@ export default class ActivityStore {
             )
             activity.isHost = activity.hostUsername === user.username;
             activity.host = activity.attendees?.find(u => u.username === activity.hostUsername);
-        } console.log('Activity before setting host:', activity.host?.username);
+        } //console.log('Activity before setting host:', activity.host?.username);
 
         activity.date = new Date(activity.date!);
         this.activityRegistry.set(activity.id, activity);
